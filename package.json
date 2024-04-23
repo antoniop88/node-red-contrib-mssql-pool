@@ -1,6 +1,6 @@
 {
-  "name": "node-red-contrib-mssql-pool",
-  "version": "0.0.6",
+  "name": "@digitalsystemsrl/red-contrib-mssql-pool",
+  "version": "1.0.0",
   "description": "Node for node-red to connect to a Microsoft MS SQL Database with Poll Size config support",
   "main": "odbc.js",
   "dependencies": {
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/redconnect-io/node-red-contrib-mssql"
+    "url": "git+https://github.com/antoniop88/node-red-contrib-mssql-pool.git"
   },
   "keywords": [
     "node-red",
@@ -30,10 +30,10 @@
     "Microsoft",
     "database"
   ],
-  "author": "Redconnect.io",
+  "author": "digitalsystemsrl.it",
   "license": "MIT",
-  "homepage": "http://www.redconnect.io",
+  "homepage": "https://www.digitalsystemsrl.it",
   "bugs": {
-    "url": "https://github.com/redconnect-io/node-red-contrib-mssql/issues"
+    "url": "https://github.com/antoniop88/node-red-contrib-mssql-pool/issues"
   }
 }
