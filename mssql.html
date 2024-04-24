@@ -44,11 +44,19 @@
         <input type="text" id="node-config-input-database">
     </div>
     <div class="form-row">
+        <label for="node-config-input-requestTimeout"><i class="icon-bookmark"></i> requestTimeout</label>
+        <input type="text" id="node-config-input-requestTimeout" placeholder="requestTimeout">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-connectionTimeout"><i class="icon-bookmark"></i> connectionTimeout</label>
+        <input type="text" id="node-config-input-connectionTimeout" placeholder="connectionTimeout">
+    </div>
+    <div class="form-row">
         <label for="node-config-input-pool"><i class="icon-bookmark"></i> Max Pool Size</label>
         <input type="text" id="node-config-input-pool" placeholder="Max Pool Size">
     </div>
     <div class="form-row">
-        <label for="node-config-input-poolTimeout"><i class="icon-bookmark"></i> Connection Timeout</label>
+        <label for="node-config-input-poolTimeout"><i class="icon-bookmark"></i>Idle Timeout in Millis</label>
         <input type="text" id="node-config-input-poolTimeout" placeholder="Connect Timeout">
     </div>
     <div class="form-row">
@@ -67,6 +75,8 @@
             port: {value:"1433"},
             encyption:{value:true},
             database: {value:""},
+            requestTimeout: { value: "15000" },
+            connectionTimeout: { value: "15000" },
             pool: { value: "10" },
             poolTimeout: { value: "30000" }
         },

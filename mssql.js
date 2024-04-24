@@ -14,6 +14,8 @@ module.exports = function (RED) {
       server: config.server,
       port: config.port,
       database: config.database,
+      requestTimeout: config.requestTimeout,
+      connectionTimeout: config.connectionTimeout,
       options: {
         encrypt: config.encyption,
         useUTC: config.useUTC
@@ -90,7 +92,7 @@ module.exports = function (RED) {
             .query(query)
             .then(result => {
               i = 0;
-              r = result.recordset;
+              r = result;
               m = msg;
               rec(msg);
             }).catch(err => {
