@@ -48,6 +48,10 @@
         <input type="text" id="node-config-input-pool" placeholder="Max Pool Size">
     </div>
     <div class="form-row">
+        <label for="node-config-input-poolTimeout"><i class="icon-bookmark"></i> Connection Timeout</label>
+        <input type="text" id="node-config-input-poolTimeout" placeholder="Connect Timeout">
+    </div>
+    <div class="form-row">
         <label for="node-config-input-encyption"><i class="fa fa-user"></i> Use Encryption?</label>
         <input type="checkbox" id="node-config-input-encyption">
         <div class="form-tips">SQL Databases hosted on Azure will need this checked</div>
@@ -64,6 +68,7 @@
             encyption:{value:true},
             database: {value:""},
             pool: { value: "10" },
+            poolTimeout: { value: "30000" }
         },
         inputs:0,
         outputs:0,
