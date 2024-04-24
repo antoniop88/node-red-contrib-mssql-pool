@@ -27,11 +27,9 @@ module.exports = function (RED) {
 
 
     this.connection = sql;
-    /*
-    node.on('close',function(){
-      node.pool.close(function(){});
+    node.on('close', function () {
+      node.pool.close(() => { });
     })
-    */
   }
 
   RED.nodes.registerType('MSSQL-CN', connection, {
@@ -75,36 +73,37 @@ module.exports = function (RED) {
 
     node.on('input', function (msg) {
       console.log(node.config);
+      const sql = node.connection;
 
-      node.connection.connect(node.config).then(function () {
+      sql.connect(node.config)
+        .then(pool => {
 
-        node.status({ fill: 'blue', shape: 'dot', text: 'requesting' });
+          node.status({ fill: 'blue', shape: 'dot', text: 'requesting' });
 
-        var query = mustache.render(node.query, msg);
+          var query = mustache.render(node.query, msg);
 
-        if (!query || (query === '')) {
-          query = msg.payload;
-        }
+          if (!query || (query === '')) {
+            query = msg.payload;
+          }
 
-        var request = new node.connection.Request();
+          return pool.request()
+            .query(query)
+            .then(result => {
+              i = 0;
+              r = result.recordset;
+              m = msg;
+              rec(msg);
+            }).catch(err => {
+              node.error(err, msg);
+              node.status({ fill: 'red', shape: 'ring', text: 'Error query' });
+              return;
+            });
 
-        request.query(query).then(function (rows) {
-          i = 0;
-          r = rows;
-          m = msg;
-          rec(msg);
-        }).catch(function (err) {
-          node.error(err);
-          node.status({ fill: 'red', shape: 'ring', text: 'Error' });
+        }).catch((err) => {
+          node.error(err, msg);
+          node.status({ fill: 'red', shape: 'ring', text: 'Error connection' });
           return;
         });
-
-
-      }).catch(function (err) {
-        node.error(err);
-        node.status({ fill: 'red', shape: 'ring', text: 'Error' });
-        return;
-      });
     });
 
   }
