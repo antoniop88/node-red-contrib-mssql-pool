@@ -92,7 +92,7 @@ module.exports = function (RED) {
             .query(query)
             .then(result => {
               i = 0;
-              r = result.recordset;
+              r = result;
               m = msg;
               rec(msg);
             }).catch(err => {
