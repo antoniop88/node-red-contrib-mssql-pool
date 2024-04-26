@@ -1,10 +1,10 @@
 {
   "name": "@digitalsystemsrl/node-red-contrib-mssql-pool",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Node for node-red to connect to a Microsoft MS SQL Database with Poll Size config support",
   "main": "mssql.js",
   "dependencies": {
-    "mssql": ">=3.0.1",
+    "mssql": "^3.0.1",
     "mustache": "latest"
   },
   "node-red": {

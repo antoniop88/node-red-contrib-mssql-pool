@@ -12,18 +12,18 @@ module.exports = function (RED) {
       password: node.credentials.password,
       domain: node.credentials.domain,
       server: config.server,
-      port: config.port,
+      port: config.port ? parseInt(config.port) : 1433,
       database: config.database,
-      requestTimeout: config.requestTimeout,
-      connectionTimeout: config.connectionTimeout,
+      connectionTimeout: config.requestTimeout ? parseInt(config.connectionTimeout) : 15000,
+      requestTimeout: config.requestTimeout ? parseInt(config.requestTimeout) : 15000,
       options: {
         encrypt: config.encyption,
         useUTC: config.useUTC
       },
       pool: {
-        max: config.pool,
+        max: config.pool ? parseInt(config.pool): 10,
         min: 0,
-        idleTimeoutMillis: config.poolTimeout
+        idleTimeoutMillis: config.poolTimeout ? parseInt(config.poolTimeout) : 15000
       },
     };
 
@@ -92,7 +92,7 @@ module.exports = function (RED) {
             .query(query)
             .then(result => {
               i = 0;
-              r = result;
+              r = result.recordset;
               m = msg;
               rec(msg);
             }).catch(err => {
